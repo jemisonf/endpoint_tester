@@ -5,9 +5,9 @@ const app = express();
 
 app.use(pino());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.all("/*", (req, res) => {
   req.log.info({
